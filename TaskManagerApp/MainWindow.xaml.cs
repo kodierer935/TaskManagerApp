@@ -23,9 +23,36 @@ namespace TaskManagerApp
 
     public partial class MainWindow : Window
     {
+        private ObservableCollection<Task> activeTasks = new ObservableCollection<Task>();
+        private ObservableCollection<Task> finishedTasks = new ObservableCollection<Task>();
+
         public MainWindow()
         {
-            InitializeComponent();//GUI
+            InitializeComponent();
+            activeTasksListBox.ItemsSource = activeTasks;
+            finishedTasksListBox.ItemsSource = finishedTasks;
         }
+
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(newTaskTextBox.Text))
+            {
+                activeTasks.Add(new Task { Title = newTaskTextBox.Text });
+                newTaskTextBox.Clear();
+            }
+        }
+
+        private void MarkAsFinished_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedTask = activeTasksListBox.SelectedItem as Task;
+            if (selectedTask != null)
+            {
+                activeTasks.Remove(selectedTask);
+                finishedTasks.Add(selectedTask);
+            }
+        }
+
+
     }
+
 }
