@@ -52,6 +52,31 @@ namespace TaskManagerApp
             }
         }
 
+        private void DeleteTask_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedTask = activeTasksListBox.SelectedItem as Task;
+            if (selectedTask != null)
+            {
+                activeTasks.Remove(selectedTask);
+            }
+            else
+            {
+                selectedTask = finishedTasksListBox.SelectedItem as Task;
+                if (selectedTask != null)
+                {
+                    finishedTasks.Remove(selectedTask);
+                }
+            }
+        }
+
+        private void ActiveTasksListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (activeTasksListBox.SelectedItem != null)
+            {
+                finishedTasksListBox.UnselectAll();
+            }
+        }
+
 
     }
 
