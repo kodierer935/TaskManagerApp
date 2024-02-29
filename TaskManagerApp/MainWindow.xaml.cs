@@ -25,7 +25,7 @@ namespace TaskManagerApp
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();//GUI
         }
     }
 }
