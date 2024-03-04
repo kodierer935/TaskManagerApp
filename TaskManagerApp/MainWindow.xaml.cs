@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Runtime.ConstrainedExecution;
 
 namespace TaskManagerApp
 {
@@ -77,7 +78,16 @@ namespace TaskManagerApp
             }
         }
 
-
+        private void EditTask_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedTask = activeTasksListBox.SelectedItem as Task;
+            if (selectedTask != null)
+            {
+                var newTitle = Microsoft.VisualBasic.Interaction.InputBox("Edit Task Title", "Edit Task", selectedTask.Title);
+                selectedTask.Title = newTitle;
+                activeTasksListBox.Items.Refresh();
+            }
+        }
     }
 
 }

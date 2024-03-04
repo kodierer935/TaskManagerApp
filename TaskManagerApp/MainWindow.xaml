@@ -13,6 +13,7 @@
             <ListBox Name="activeTasksListBox" DisplayMemberPath="Title" SelectionChanged="ActiveTasksListBox_SelectionChanged"/>
             <Button Content="Mark as Finished" Click="MarkAsFinished_Click"/>
             <Button Content="Delete Task" Click="DeleteTask_Click"/>
+            <Button Content="Edit Task" Click="EditTask_Click"/>
         </StackPanel>
         <ListBox Name="finishedTasksListBox" Grid.Column="1" DisplayMemberPath="Title" Margin="5" />
     </Grid>
